@@ -37,15 +37,15 @@ int *find_sequences(int *arr, int len)
 	{
 		int *p,i;
 		p = (int*)malloc(6 * sizeof(int));
-		for (i = 0; i <= len; i++)
+		for (i = 0; i < len; i++)
 		{
-			if (arr[i] - arr[i - 1] == arr[i + 1] - arr[i])
+			if (arr[i+1] - arr[i+1 - 1] == arr[i + 1+1] - arr[i+1])
 			{
-				p[0] = i - 1;
+				p[0] = i+1 - 1;
 				break;
 			}
 		}
-		for (i = 0; i <= len; i++)
+		for (i = p[0]; i < len; i++)
 		{
 			if (arr[i] - arr[i - 1] != arr[i + 1] - arr[i])
 				p[1] = i;
