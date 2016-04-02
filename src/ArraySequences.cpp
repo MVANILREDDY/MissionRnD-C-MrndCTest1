@@ -31,7 +31,55 @@ Difficulty : Medium
 #include <stdio.h>
 #include <math.h>
 
-int * find_sequences(int *arr, int len){
-	//Return final array which has 6indexes [AP1_S,AP1_E,AP2_S,AP2_E,GP1_S,GP2_E]
-	return NULL;
+int *find_sequences(int *arr, int len)
+{
+	if (arr)
+	{
+		int *p,i;
+		p = (int*)malloc(6 * sizeof(int));
+		for (i = 0; i <= len; i++)
+		{
+			if (arr[i] - arr[i - 1] == arr[i + 1] - arr[i])
+			{
+				p[0] = i - 1;
+				break;
+			}
+		}
+		for (i = 0; i <= len; i++)
+		{
+			if (arr[i] - arr[i - 1] != arr[i + 1] - arr[i])
+				p[1] = i;
+			break;
+		}
+		for (i = p[1]; i <= len; i++)
+		{
+			if (arr[i + 2] - arr[i + 1] == arr[i + 3] - arr[i + 2])
+				p[2] = i + 1;
+			break;
+		}
+		for (i = p[2]; i <= len; i++)
+		{
+			if (arr[i + 1] - arr[i] != arr[i + 2] - arr[i + 1])
+				p[3] = i + 1;
+			break;
+		}
+		for (i = 1; i <= len; i++)
+		{
+			if (arr[i + 1] / arr[i] == arr[i + 2] / arr[i + 1])
+				p[4] = i;
+			break;
+		}
+		for (i = p[4] + 1; i <= len; i++)
+		{
+			if (arr[i + 1] / arr[i] != arr[i + 2] / arr[i + 1])
+				p[5] = i + 2;
+			break;
+		}
+		return p;
+	}
+	else
+	{
+		return NULL;
+	}
+
 }
