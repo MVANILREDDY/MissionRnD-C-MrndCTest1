@@ -37,7 +37,7 @@ int merge_circularlists(struct node**head1, struct node**head2)
 	struct node* list1 = *head1, *list2 = *head2 ;
 	int count = 0;
 	
-	if (list1&&list2)
+	if (list1==NULL&&list2==NULL)
 	{
 		return 0;
 	}
